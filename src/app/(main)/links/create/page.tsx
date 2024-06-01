@@ -6,15 +6,15 @@ import { Label } from "@/components/ui/label";
 
 const page = () => {
   return (
-    <div className="p-10 flex flex-col mx-auto gap-2 items-start">
+    <div className="p-10 flex flex-col  mx-auto gap-4 items-start">
       <h1>Create new</h1>
       <div>
         <p>Destination</p>
-        <Input placeholder="https://example.com/my-long-url" />
+        <Input className="w-96" placeholder="https://example.com/my-long-url" />
       </div>
       <h2>Ways to short</h2>
       <div className="flex items-end w-96">
-        <Input disabled placeholder="bit.ly/" />
+        <Input disabled value="bit.ly/" />
         <div>
           <span className="text-sm"> Custom back half (optional)</span>
           <Input className="w-56" />
@@ -25,7 +25,7 @@ const page = () => {
         <Label htmlFor="qr-code">QR Code</Label>
       </div>
 
-      <Button>Generate</Button>
+      <Button className="w-96">Generate</Button>
     </div>
   );
 };

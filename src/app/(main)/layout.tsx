@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <div className="flex justify-between md:w-screen">
       <SideBar />
-      <div className="w-full ">
+      <div className="w-full flex flex-col items-center">
         <header className="border px-10 flex justify-between items-center border-b h-16 w-full">
           <div className="flex items-center">
             <Input placeholder="Search" />
