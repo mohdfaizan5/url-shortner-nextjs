@@ -11,13 +11,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { FaLink } from "react-icons/fa6";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdAnalytics } from "react-icons/md";
+import { IoQrCodeOutline } from "react-icons/io5";
 
 const routes = [
-  { title: "Home", route: "/home" },
-  { title: "Links", route: "/links" },
-  { title: "QR code", route: "/qr-code" },
-  { title: "Analytics", route: "/analytics" },
-  { title: "Settings", route: "/settings" },
+  { title: "Home", route: "/home", icon: <AiOutlineHome /> },
+  { title: "Links", route: "/links", icon: <FaLink /> },
+  { title: "QR code", route: "/qr-code", icon: <IoQrCodeOutline /> },
+  { title: "Analytics", route: "/analytics", icon: <MdAnalytics /> },
+  { title: "Settings", route: "/settings", icon: <IoSettingsOutline /> },
 ];
 
 const SideBar = () => {
@@ -36,11 +40,13 @@ const SideBar = () => {
         {">"}
       </Button>
       <div>
-        <h2 className="text-3xl font-bold mb-10">Logo</h2>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="mb-5  rounded-md border-2 px-5 border-primary py-3">
-            {isNavOpen ? "Create New" : "+"}
-          </DropdownMenuTrigger>
+        <h2 className="text-3xl font-bold mb-10">~Logo~</h2>
+        <DropdownMenu >
+          <Button>
+            <DropdownMenuTrigger >
+              {isNavOpen ? "+  Create New" : "+"}
+            </DropdownMenuTrigger>
+          </Button>
           <DropdownMenuContent
             className={`p-3 ${isNavOpen ? " ml-64" : " ml-20 "}`}
           >
@@ -55,9 +61,13 @@ const SideBar = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <nav className="flex flex-col">
+      <nav className="flex flex-col mt-5">
         {routes.map((route) => (
-          <EachRouteDiv isOpen={isNavOpen} route={route.route}>
+          <EachRouteDiv
+            isOpen={isNavOpen}
+            icon={route.icon}
+            route={route.route}
+          >
             {route.title}
           </EachRouteDiv>
         ))}
@@ -68,11 +78,11 @@ const SideBar = () => {
 
 export default SideBar;
 
-export const EachRouteDiv = ({ children, isOpen, route }: any) => {
+export const EachRouteDiv = ({ children, icon, isOpen, route }: any) => {
   return (
     <Link href={route}>
       <div className="text-lg gap-2 flex items-center font-medium hover:bg-primary hover:text-white px-2 py-2 rounded-md w-[100%]">
-        <AiOutlineHome size={24} />
+        <span className="text-2xl">{icon}</span>
         {isOpen ? <p className="">{children}</p> : ""}
       </div>
     </Link>
