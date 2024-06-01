@@ -1,0 +1,7 @@
+@tailwind utilities;
+
+@layer utilities{
+  h1{
+    @apply font-bold md:text-3xl
+  }
+}

@@ -1,0 +1,50 @@
+import SideBar from "@/components/SideBar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <div className="flex justify-between md:w-screen">
+      <SideBar />
+      <div className="w-full ">
+        <header className="border px-10 flex justify-between items-center border-b h-16 w-full">
+          <div className="flex items-center">
+            <Input placeholder="Search" />
+            <Button>Upgrade</Button>
+          </div>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1">
+              <Avatar>
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              Faizan
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem>Subscription</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </header>
+        {children}
+      </div>
+    </div>
+  );
+}
