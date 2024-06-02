@@ -61,7 +61,7 @@ const EachLink = ({ title, shortURL, sourceURL, createDate }: any) => {
       </CardContent>
       <CardFooter>
         {/* <p className="">{createDate}</p> */}
-        <Badge variant="outline">{createDate}</Badge>
+        <Badge variant="secondary">{createDate}</Badge>
       </CardFooter>
     </Card>
   );

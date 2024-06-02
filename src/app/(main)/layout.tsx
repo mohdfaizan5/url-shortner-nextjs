@@ -33,13 +33,14 @@ export default function RootLayout({
               </Avatar>
               Faizan
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="p-3">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Billing</DropdownMenuItem>
               <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
+              <Button variant={"destructive"}>Logout</Button>
+                {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
