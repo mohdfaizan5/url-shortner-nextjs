@@ -91,11 +91,8 @@ export default SideBar;
 
 export const EachRouteDiv = ({ children, icon, isOpen, route }: any) => {
   return (
-    <Link href={route}>
-      <div
-        key={route}
-        className="text-lg gap-2 flex items-center font-medium hover:bg-primary/50 hover:duration-150 hover:text-white px-2 py-2 rounded-md w-[100%]"
-      >
+    <Link key={route} href={route}>
+      <div className="text-lg gap-2 flex items-center font-medium hover:bg-primary/50 hover:duration-150 hover:text-white px-2 py-2 rounded-md w-[100%]">
         <span className="text-2xl">{icon}</span>
         {isOpen ? <p className="">{children}</p> : ""}
       </div>

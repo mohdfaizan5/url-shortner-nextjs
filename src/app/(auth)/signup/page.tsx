@@ -5,8 +5,13 @@ import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import { signIn } from "@/auth";
+import { signupAction } from "@/lib/actions";
 
 const page = () => {
+
+
+
   return (
     <div className="flex flex-row-reverse items-center h-screen justify-center gap-16">
       <section className="flex flex-col gap-10 items-center m-primary mr-1">
@@ -20,10 +25,15 @@ const page = () => {
         />
       </section>
       <section>
-        <form className="flex flex-col gap-2">
-          <Input placeholder="username" />
-          <Input placeholder="password" type="password" />
-          <Input placeholder="confirm password" type="password" />
+        <form className="flex flex-col gap-2" action={signupAction}>
+          <Input name="text" type="text" placeholder="name" />
+          <Input name="email" type="email" placeholder="email" />
+          <Input name="password" placeholder="password" type="password" />
+          <Input
+            name="confirmPassword"
+            placeholder="confirm password"
+            type="password"
+          />
           <Button>Login</Button>
         </form>
         <Separator className="my-5" />

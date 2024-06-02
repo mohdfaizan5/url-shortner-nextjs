@@ -5,6 +5,7 @@ import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
+import { signIn } from "@/auth";
 
 const page = () => {
   return (
@@ -20,14 +21,23 @@ const page = () => {
         />
       </section>
       <section>
-        <form className="flex flex-col gap-2">
-          <Input placeholder="username" />
+        <form
+          className="flex flex-col gap-2"
+          action={async (formData) => {
+            "use server"
+            await signIn("credentials", formData);
+          }}
+        >
+          <Input placeholder="email" type="email" name="email" />
           <Input placeholder="password" type="password" />
           <Button>Login</Button>
         </form>
         <Separator className="my-5" />
         <form className="flex flex-col gap-4 items-center ">
-          <Button className="flex items-center gap-2 w-full" variant={"outline"}>
+          <Button
+            className="flex items-center gap-2 w-full"
+            variant={"outline"}
+          >
             <FcGoogle size={24} /> Login with Google
           </Button>
           <Link href={"/signup"} className="underline text-xs">
