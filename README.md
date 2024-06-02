@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# URL shortener Next.js
+  Its is a full stack robust nextjs url shortener built with keeping production in mind (still in progrees), It is has features like url shortener, qr code generator with 
 
-## Getting Started
+## Functionality
+1. NextJs, TailwindCSS, Typescript
+2. Authentication (Google, Github, Credentials)
 
-First, run the development server:
+# Demo
+<video src='https://github.com/mohdfaizan5/url-shortner-nextjs/assets/79694828/9fe02fa7-f461-4073-b087-8349cde7dba1' width=180><video/>
+<!--
+-->
+## Scope of project
+- [ ] UI
+- [ ] Functionality
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Design
+<p aligh="center">
+  
+  ![screencapture-localhost-3000-2024-06-02-13_24_58](https://github.com/mohdfaizan5/url-shortner-nextjs/assets/79694828/83be462c-9a56-463b-962b-4279de33e58f)
+</p>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

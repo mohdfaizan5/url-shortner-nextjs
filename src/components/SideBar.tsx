@@ -6,8 +6,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
@@ -40,28 +38,30 @@ const SideBar = () => {
       </Button>
       <section>
         <div className="flex flex-col items-center">
-          <h2 className="text-3xl font-bold mb-10">
-            {isNavOpen ? "~Logo~" : "~"}
-          </h2>
+          <Link href={"/"}>
+            <h2 className="text-3xl font-bold mb-10">
+              {isNavOpen ? "~Logo~" : "~"}
+            </h2>
+          </Link>
           <DropdownMenu>
             <DropdownMenuTrigger className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
               {isNavOpen ? "+  Create New" : "+"}
             </DropdownMenuTrigger>
             <DropdownMenuContent
-              className={`p-3 ${isNavOpen ? " ml-[220px]" : " ml-20 "}`}
+              className={`p-3 text-lg ${isNavOpen ? " ml-[220px]" : " ml-20 "}`}
             >
               {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
               {/* <DropdownMenuSeparator /> */}
-              <DropdownMenuItem>
+              <DropdownMenuItem className="p-3">
                 <Link href={"/links/create"}>Link</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="p-3">
                 <Link href={"/qr-code/create"}>QR code</Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-        <nav className="flex flex-col mt-5">
+        <nav className="flex flex-col mt-10">
           {routes.map((route) => (
             <EachRouteDiv
               isOpen={isNavOpen}
@@ -92,7 +92,10 @@ export default SideBar;
 export const EachRouteDiv = ({ children, icon, isOpen, route }: any) => {
   return (
     <Link href={route}>
-      <div className="text-lg gap-2 flex items-center font-medium hover:bg-primary/50 hover:duration-150 hover:text-white px-2 py-2 rounded-md w-[100%]">
+      <div
+        key={route}
+        className="text-lg gap-2 flex items-center font-medium hover:bg-primary/50 hover:duration-150 hover:text-white px-2 py-2 rounded-md w-[100%]"
+      >
         <span className="text-2xl">{icon}</span>
         {isOpen ? <p className="">{children}</p> : ""}
       </div>
