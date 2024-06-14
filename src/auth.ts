@@ -1,15 +1,23 @@
 import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import credentials from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    Credentials({
+    credentials({
+      name: "credentials",
       credentials: {
-        email: {},
-        password: {},
+        email: {
+          label: "Email",
+          type: "email",
+        },
+        password: {
+          label: "Password",
+          type: "password",
+        },
       },
-      authorize: async (credentials) => {
-        let user = null;
+      authorize: async (credentials: any) => {
+        let user = { email: "faizan@gmail.com", plan: "basic" };
+        console.log(credentials);
 
         // we are getting the data, now we have to use db to access that data send to db to create new user
         return user;

@@ -6,6 +6,9 @@ import { Separator } from "@/components/ui/separator";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { signIn } from "@/auth";
+import { connectDB } from "@/lib/db_connection";
+import { User } from "@/model/user.model";
+import { redirect } from "next/navigation";
 
 const page = () => {
   return (
@@ -24,12 +27,12 @@ const page = () => {
         <form
           className="flex flex-col gap-2"
           action={async (formData) => {
-            "use server"
+            "use server";
             await signIn("credentials", formData);
           }}
         >
           <Input placeholder="email" type="email" name="email" />
-          <Input placeholder="password" type="password" />
+          <Input placeholder="password" type="password" name="password" />
           <Button>Login</Button>
         </form>
         <Separator className="my-5" />
