@@ -9,11 +9,20 @@
 <video src='https://github.com/mohdfaizan5/url-shortner-nextjs/assets/79694828/9fe02fa7-f461-4073-b087-8349cde7dba1' width=180><video/>
 <!--
 -->
+
 ## Scope of project
-- [ ] UI
+- [x] UI
 - [ ] Functionality
 
+## TODO
 
+- [ ] Add type safety
+- [ ] Add extra features
+- [ ] Auth
+  - [ ] Add other Auth Providers
+  - [ ] Add role based auth 
+- [ ] Make Mobile responsive
+- [ ] Add premium users
 
 # Design
 <p aligh="center">

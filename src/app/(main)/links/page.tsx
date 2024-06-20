@@ -9,39 +9,35 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { IoShareSocial } from "react-icons/io5";
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
+import { Link } from "@/model/link.model";
 
-const page = () => {
+const page = async () => {
+  const allShortUrls = await Link.find(); // make sure you're show only particular users short links
+  console.log(allShortUrls);
   return (
     <div className="p-10">
       <h1 className="mb-10">Links</h1>
       <section className="md:grid grid-cols-2 gap-3">
-        <EachLink
-          title={"BTM Library Holiday Checker"}
-          shortURL={"bit.ly/is-btm-lib-open"}
-          sourceURL={"library.mohdfaizan.me"}
-          createDate={"2024-06-01"}
-        />
-        <EachLink
-          title={"BTM Library Holiday Checker"}
-          shortURL={"bit.ly/is-btm-lib-open"}
-          sourceURL={"library.mohdfaizan.me"}
-          createDate={"2024-06-01"}
-        />
-        <EachLink
-          title={"BTM Library Holiday Checker"}
-          shortURL={"bit.ly/is-btm-lib-open"}
-          sourceURL={"library.mohdfaizan.me"}
-          createDate={"2024-06-01"}
-        />
+        {allShortUrls
+          ? allShortUrls.map((item, key) => (
+              <EachLink
+                key={key}
+                title={item.title ? item.title : "No title"}
+                shortURL={item.shortLink}
+                sourceURL={item.destinationLink}
+                createDate={item.createdAt.toDateString()}
+              />
+            ))
+          : "No links to show"}
       </section>
     </div>
   );
 };
 
-const EachLink = ({ title, shortURL, sourceURL, createDate }: any) => {
+const EachLink = ({ title, shortURL, sourceURL, createDate, key }: any) => {
   return (
-    <Card className="md:w-[500px]">
+    <Card className="md:w-[500px]" key={key}>
       <CardHeader>
         <CardTitle className="flex justify-between">
           <span className="w-8/12">{title}</span>
@@ -53,7 +49,9 @@ const EachLink = ({ title, shortURL, sourceURL, createDate }: any) => {
           </>
         </CardTitle>
         <CardDescription>
-          <a className="underline" href={shortURL}>{shortURL}</a>
+          <a className="underline" href={shortURL}>
+            {shortURL}
+          </a>
         </CardDescription>
       </CardHeader>
       <CardContent>

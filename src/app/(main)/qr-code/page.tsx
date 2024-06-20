@@ -11,30 +11,25 @@ import { Button } from "@/components/ui/button";
 import { IoShareSocial } from "react-icons/io5";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-const page = () => {
+import { QRcode } from "@/model/qrcode.model";
+const page = async () => {
+  const allQRs = await QRcode.find(); // (:TODO) only find the ones with user id
+  console.log(allQRs);
   return (
     <div className="p-10">
-      <h1 className="mb-10">Links</h1>
+      <h1 className="mb-10">QR codes</h1>
       <section className="flex flex-col gap-5">
-        <EachQR
-          title={"BTM Library Holiday Checker"}
-          shortURL={"bit.ly/is-btm-lib-open"}
-          sourceURL={"library.mohdfaizan.me"}
-          createDate={"2024-06-01"}
-        />
-        <EachQR
-          title={"BTM Library Holiday Checker"}
-          shortURL={"bit.ly/is-btm-lib-open"}
-          sourceURL={"library.mohdfaizan.me"}
-          createDate={"2024-06-01"}
-        />
-        <EachQR
-          title={"BTM Library Holiday Checker"}
-          shortURL={"bit.ly/is-btm-lib-open"}
-          sourceURL={"library.mohdfaizan.me"}
-          createDate={"2024-06-01"}
-        />
+        {allQRs.length > 0
+          ? allQRs.map((item, key) => (
+              <EachQR
+                title={item.title? item.title : "No title"}
+                sourceURL={item.destinationLink}
+                createDate={item.createdAt.toDateString()}
+              />
+            ))
+          : "No qrs"}
       </section>
+      
     </div>
   );
 };
@@ -57,13 +52,13 @@ const EachQR = ({ title, shortURL, sourceURL, createDate }: any) => {
           </CardTitle>
           <CardDescription>
             <a className="underline" href={shortURL}>
-              {shortURL}
+              {sourceURL}
             </a>
           </CardDescription>
         </CardHeader>
-        <CardContent className="py-0">
-          <p>{sourceURL}</p>
-        </CardContent>
+        {/* <CardContent className="py-0">
+          <p></p>
+        </CardContent> */}
         <CardFooter>
           {/* <p className="">{createDate}</p> */}
           <Badge variant="outline">{createDate}</Badge>
