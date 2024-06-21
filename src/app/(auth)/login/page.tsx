@@ -3,14 +3,17 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
-import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
-import { signIn } from "@/auth";
+import { auth, signIn } from "@/auth";
 import { connectDB } from "@/lib/db_connection";
 import { User } from "@/model/user.model";
 import { redirect } from "next/navigation";
+import OauthLogins from "@/components/OauthLogins";
 
-const page = () => {
+const page = async () => {
+  const session = await auth();
+  console.log(session);
+  if (session?.user) redirect("/home");
   return (
     <div className="flex items-center h-screen justify-center gap-16">
       <section className="flex flex-col gap-10 items-center m-primary mr-1">
@@ -36,17 +39,13 @@ const page = () => {
           <Button>Login</Button>
         </form>
         <Separator className="my-5" />
-        <form className="flex flex-col gap-4 items-center ">
-          <Button
-            className="flex items-center gap-2 w-full"
-            variant={"outline"}
-          >
-            <FcGoogle size={24} /> Login with Google
-          </Button>
-          <Link href={"/signup"} className="underline text-xs">
-            already have an account
-          </Link>
-        </form>
+        {/* <form className="flex flex-col gap-4 items-center ">
+        </form> */}
+        <OauthLogins />
+
+        <Link href={"/signup"} className="underline text-xs">
+          already have an account
+        </Link>
       </section>
     </div>
   );

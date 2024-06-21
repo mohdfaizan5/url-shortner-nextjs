@@ -1,5 +1,5 @@
 import SideBar from "@/components/SideBar";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -10,12 +10,15 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { logOut } from "@/actions/general";
+import { auth } from "@/auth";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
   return (
     <div className="flex justify-between md:w-screen">
       <SideBar />
@@ -30,8 +33,9 @@ export default function RootLayout({
             <DropdownMenuTrigger className="flex items-center gap-1">
               <Avatar>
                 <AvatarFallback>CN</AvatarFallback>
+                <AvatarImage src={session?.user?.image as string} />
               </Avatar>
-              Faizan
+              {session?.user?.name}
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-3">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -39,8 +43,12 @@ export default function RootLayout({
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Billing</DropdownMenuItem>
               <DropdownMenuItem>Team</DropdownMenuItem>
-              <Button variant={"destructive"}>Logout</Button>
-                {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
+              <form action={logOut}>
+                <Button variant={"destructive"} type="submit">
+                  Logout
+                </Button>
+              </form>
+              {/* <DropdownMenuItem>Subscription</DropdownMenuItem> */}
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

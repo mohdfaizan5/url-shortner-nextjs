@@ -1,5 +1,6 @@
 "use server";
 
+import { signIn, signOut } from "@/auth";
 import { connectDB } from "@/lib/db_connection";
 import { Link } from "@/model/link.model";
 import { QRcode } from "@/model/qrcode.model";
@@ -60,4 +61,14 @@ const createNewQR = async (formData: FormData) => {
   redirect("/qr-code");
 };
 
-export { createNewShortURL, createNewQR };
+const loginWithOauth = async (formData: FormData) => {
+  console.log(formData);
+  const provider = formData.get("action") as string;
+  await signIn(provider, { redirectTo: "/home" });
+};
+
+const logOut = async () => {
+  await signOut({ redirectTo: "/" });
+};
+
+export { createNewShortURL, createNewQR, loginWithOauth, logOut };

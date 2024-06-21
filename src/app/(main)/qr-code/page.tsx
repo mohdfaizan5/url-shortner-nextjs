@@ -22,20 +22,20 @@ const page = async () => {
         {allQRs.length > 0
           ? allQRs.map((item, key) => (
               <EachQR
-                title={item.title? item.title : "No title"}
+                key={key}
+                title={item.title ? item.title : "No title"}
                 sourceURL={item.destinationLink}
                 createDate={item.createdAt.toDateString()}
               />
             ))
           : "No qrs"}
       </section>
-      
     </div>
   );
 };
-const EachQR = ({ title, shortURL, sourceURL, createDate }: any) => {
+const EachQR = ({ title, shortURL, sourceURL, createDate, key }: any) => {
   return (
-    <Card className="md:w-[600px] h-48 flex items-center">
+    <Card className="md:w-[600px] h-48 flex items-center" key={key}>
       <div>
         <Image src={"/qr-example.svg"} height={190} width={190} alt={title} />
       </div>

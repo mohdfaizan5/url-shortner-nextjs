@@ -23,6 +23,7 @@
   - [ ] Add role based auth 
 - [ ] Make Mobile responsive
 - [ ] Add premium users
+- [ ] Hash the password
 
 # Design
 <p aligh="center">
