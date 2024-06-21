@@ -25,6 +25,7 @@ const page = () => {
         <p>Destination</p>
         <Input
           className="w-96"
+          required
           name="destinationLink"
           placeholder="https://example.com/my-long-url"
         />
