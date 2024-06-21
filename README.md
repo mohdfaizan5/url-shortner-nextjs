@@ -16,14 +16,28 @@
 
 ## TODO
 
-- [ ] Add type safety
-- [ ] Add extra features
+### Important
+- [ ] ✋Work on redirecting the user when he add the short link
+  - [ ] When a short url is called make sure you update the `visits` for that link
 - [ ] Auth
-  - [ ] Add other Auth Providers
+  - [ ] ✋Add Credentials providers
+  - [x] Add other Auth Providers
+    - [x] github 
+    - [x] google 
   - [ ] Add role based auth 
+- [ ] 
+- [ ] Work on analytics dashboard
+  - [ ] Add charts 
+  - [ ] Add logic to fetch actual analytics results from db and render ui
+
+
+
+### Good to have
+- [ ] Add type safety
 - [ ] Make Mobile responsive
-- [ ] Add premium users
-- [ ] Hash the password
+- [ ] Add extra features
+  - [ ] Add premium users
+  - [ ] Hash the password
 
 # Design
 <p aligh="center">

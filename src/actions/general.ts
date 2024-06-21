@@ -12,6 +12,7 @@ const createNewShortURL = async (formData: FormData) => {
 
   const destinationLink = formData.get("destinationLink") as string | undefined;
   let customBackHalf = formData.get("customBackHalf");
+  let title = formData.get("title");
 
   // Input validation: check if we're getting data (:TODO)
   if (!destinationLink) {
@@ -41,6 +42,7 @@ const createNewShortURL = async (formData: FormData) => {
     const newURL = await Link.create({
       destinationLink,
       shortLink: customBackHalf,
+      title,
     });
     console.log("✅✅", newURL);
     // if everything is fine, make a query to fetch all the urls
@@ -56,6 +58,7 @@ const createNewQR = async (formData: FormData) => {
 
   // take input
   const destinationLink = formData.get("destinationLink");
+  const title = formData.get("title") as string | undefined;
 
   // validate input (:TODO)
   // Type Checking (:TODO)
@@ -63,7 +66,7 @@ const createNewQR = async (formData: FormData) => {
   try {
     await connectDB();
     // create new QR because no need checking
-    const newQR = await QRcode.create({ destinationLink });
+    const newQR = await QRcode.create({ destinationLink, title });
     console.log("✅✅new qr", newQR);
     if (!newQR) throw new Error("QR not created");
   } catch (error) {

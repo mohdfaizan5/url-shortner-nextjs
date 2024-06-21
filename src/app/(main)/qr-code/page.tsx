@@ -12,6 +12,8 @@ import { IoShareSocial } from "react-icons/io5";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { QRcode } from "@/model/qrcode.model";
+import QRCode from "react-qr-code";
+
 const page = async () => {
   const allQRs = await QRcode.find(); // (:TODO) only find the ones with user id
   console.log(allQRs);
@@ -33,11 +35,17 @@ const page = async () => {
     </div>
   );
 };
-const EachQR = ({ title, shortURL, sourceURL, createDate, key }: any) => {
+const EachQR = ({ title, sourceURL, createDate, key }: any) => {
   return (
-    <Card className="md:w-[600px] h-48 flex items-center" key={key}>
+    <Card className="md:w-[600px] md:px-5 h-48 flex items-center" key={key}>
       <div>
-        <Image src={"/qr-example.svg"} height={190} width={190} alt={title} />
+        <QRCode
+          size={130}
+          style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+          value={sourceURL}
+          viewBox={`0 0 256 256`}
+        />
+        {/* <Image src={"/qr-example.svg"} height={190} width={190} alt={title} /> */}
       </div>
       <div>
         <CardHeader>
@@ -51,9 +59,9 @@ const EachQR = ({ title, shortURL, sourceURL, createDate, key }: any) => {
             </>
           </CardTitle>
           <CardDescription>
-            <a className="underline" href={shortURL}>
+            <span className="underline" >
               {sourceURL}
-            </a>
+            </span>
           </CardDescription>
         </CardHeader>
         {/* <CardContent className="py-0">

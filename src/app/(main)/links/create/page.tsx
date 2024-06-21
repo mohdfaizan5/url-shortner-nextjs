@@ -13,14 +13,14 @@ const page = () => {
       action={createNewShortURL}
     >
       <h1>Create new</h1>
-      {/* <div>
+      <div>
         <p>Title</p>
         <Input
           className="w-96"
           name="title"
           placeholder=""
         />
-      </div> */}
+      </div>
       <div>
         <p>Destination</p>
         <Input
