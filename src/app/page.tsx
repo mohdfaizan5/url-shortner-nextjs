@@ -1,8 +1,11 @@
+import { HorizontalScroller2 } from "@/components/BrandScroller";
 import SideBar from "@/components/SideBar";
+import TweetCard from "@/components/TweetCard";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Tweet } from "react-tweet";
 
 const page = () => {
   return (
@@ -46,6 +49,29 @@ const page = () => {
           alt=""
         />
       </section>
+      <section className="grid grid-cols-1 md:gap-3 md:grid-cols-3 mx-auto">
+        <TweetCard
+          name="Guillermo Rauch"
+          text="This is a game changer for anyone using @tailwindcss"
+        />
+        <TweetCard
+          name="Guillermo Rauch"
+          text="This is a game changer for anyone using @tailwindcss is a game changer for anyone using tailwindcss is a game changer for anyone using lwindcss"
+        />
+        <TweetCard
+          name="Guillermo Rauch"
+          text="This is a game changer for anyone using @tailwindcss"
+        />
+        <TweetCard
+          name="Guillermo Rauch"
+          text="This is a game changer for anyone using @tailwindcss is a game changer for anyone using @tailwindcss is a game changer for anyone using @tailwindcss"
+        />
+        <TweetCard
+          name="Guillermo Rauch"
+          text="This is a game changer for anyone using @tailwindcss"
+        />
+      </section>{" "}
+      <HorizontalScroller2 />
       <section className=" flex flex-col items-center justify-center py-10 ">
         <h1 className="text-3xl font-semibold">FAQ's</h1>
         <div className="w-[500px]">

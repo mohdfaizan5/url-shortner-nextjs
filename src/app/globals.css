@@ -12,7 +12,7 @@
     @apply font-semibold md:text-2xl;
   }
   p {
-    @apply  md:text-lg;
+    @apply md:text-lg;
   }
 }
 
